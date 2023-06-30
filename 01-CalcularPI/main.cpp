@@ -1,23 +1,18 @@
 #include <iostream>
-
+#include<math.h>
 using namespace std;
 
-float calcularSerie(int vueltas){
+float calcularSerie(){
     long double serie=1.0;
-    for(int i=1; i<vueltas; i++){
-        long double valorSerie = 1.0/((2.0*i)+1.0); 
-        if(i%2!=0){
-            serie-= valorSerie;
-        }
-        else serie+= valorSerie;
+    for(int i=1; i>0; i++){ 
+        serie+= pow(-1, i) /((2.0* double(i))+1.0);
+        if(fabs(serie*4 - 3.141592) < 0.0000001) break;
     }
-
     return serie*4.0;
 }
 
 int main(){
-    int vueltas= 1000000;
-    long double valor = calcularSerie(vueltas);
+    long double valor = calcularSerie();
     cout<<valor;
 
 }
